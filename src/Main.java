@@ -1,17 +1,19 @@
+import org.junit.jupiter.api.Test;
 import java.util.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class TrainApp {
-    public static void main(String[] args) {
+public class TrainAppTest {
 
-        HashSet<String> bogies = new HashSet<>();
+    @Test
+    void testGroupBogies() {
+        List<Bogie> list = Arrays.asList(
+                new Bogie("B1", "Passenger"),
+                new Bogie("B2", "Goods")
+        );
 
-        bogies.add("B1");
-        bogies.add("B1");
-        bogies.add("B2");
+        Map<String, List<Bogie>> result = TrainApp.groupBogies(list);
 
-        System.out.println("=== UNIQUE BOGIES ===");
-        for(String b : bogies){
-            System.out.println(b);
-        }
+        assertEquals(1, result.get("Passenger").size());
+        assertEquals(1, result.get("Goods").size());
     }
 }
