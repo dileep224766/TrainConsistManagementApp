@@ -24,7 +24,26 @@ import org.junit.jupiter.api.Test;
 import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TrainAppTest {
+public class TrainApp {
+
+    public static boolean validate(String trainId, String cargoCode) {
+        return trainId.matches("TR\\d+") && cargoCode.matches("CG\\d+");
+    }
+
+    public static void main(String[] args) {
+        System.out.println(validate("TR123", "CG456"));
+    }
+}import org.junit.jupiter.api.Test;
+ import static org.junit.jupiter.api.Assertions.*;
+
+ public class TrainAppTest {
+
+     @Test
+     void testValidation() {
+         assertTrue(TrainApp.validate("TR123", "CG456"));
+         assertFalse(TrainApp.validate("123", "XYZ"));
+     }
+ }public class TrainAppTest {
 
     @Test
     void testTotalSeats() {
