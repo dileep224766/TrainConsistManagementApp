@@ -36,7 +36,50 @@ public class TrainApp {
 }import org.junit.jupiter.api.Test;
  import static org.junit.jupiter.api.Assertions.*;
 
- public class TrainAppTest {
+ import java.util.*;
+
+ class Bogie {
+     String type;
+     boolean safety;
+
+     Bogie(String type, boolean safety) {
+         this.type = type;
+         this.safety = safety;
+     }
+ }
+
+import org.junit.jupiter.api.Test;
+import java.util.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class TrainAppTest {
+
+    @Test
+    void testSafety() {
+        List<Bogie> list = Arrays.asList(
+                new Bogie("Goods", true),
+                new Bogie("Goods", false)
+        );
+
+        assertFalse(TrainApp.checkSafety(list));
+    }
+} public class TrainApp {
+
+     public static boolean checkSafety(List<Bogie> list) {
+         return list.stream()
+                 .filter(b -> b.type.equals("Goods"))
+                 .allMatch(b -> b.safety);
+     }
+
+     public static void main(String[] args) {
+         List<Bogie> list = Arrays.asList(
+                 new Bogie("Goods", true),
+                 new Bogie("Goods", true)
+         );
+
+         System.out.println(checkSafety(list));
+     }
+ }public class TrainAppTest {
 
      @Test
      void testValidation() {
