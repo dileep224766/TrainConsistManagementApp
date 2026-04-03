@@ -1,56 +1,64 @@
 import java.util.*;
-import java.util.stream.*;
 
 class Bogie {
-    String id;
-    String type;
+    int seats;
 
-    Bogie(String id, String type) {
-        this.id = id;
-        this.type = type;
+    Bogie(int seats) {
+        this.seats = seats;
     }
 }
 
 public class TrainApp {
 
-    public static List<Bogie> filterPassengerBogies(List<Bogie> list) {
-        return list.stream()
-                .filter(b -> b.type.equalsIgnoreCase("Passenger"))
-                .collect(Collectors.toList());
+ import java.util.*;
+
+ class Bogie {
+     int seats;
+
+     Bogie(int seats) {
+         this.seats = seats;
+     }
+ }
+
+import org.junit.jupiter.api.Test;
+import java.util.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class TrainAppTest {
+
+    @Test
+    void testTotalSeats() {
+        List<Bogie> list = Arrays.asList(
+                new Bogie(10),
+                new Bogie(20)
+        );
+
+        assertEquals(30, TrainApp.totalSeats(list));
+    }
+} public class TrainApp {
+
+     public static int totalSeats(List<Bogie> list) {
+         return list.stream().map(b -> b.seats).reduce(0, Integer::sum);
+     }
+
+     public static void main(String[] args) {
+         List<Bogie> list = Arrays.asList(
+                 new Bogie(72),
+                 new Bogie(60)
+         );
+
+         System.out.println(totalSeats(list));
+     }
+ }   public static int totalSeats(List<Bogie> list) {
+        return list.stream().map(b -> b.seats).reduce(0, Integer::sum);
     }
 
-   import org.junit.jupiter.api.Test;
-   import java.util.*;
-   import static org.junit.jupiter.api.Assertions.*;
+    public static void main(String[] args) {
+        List<Bogie> list = Arrays.asList(
+                new Bogie(72),
+                new Bogie(60)
+        );
 
-   public class TrainAppTest {
-
-       @Test
-       void testFilterPassengerBogies() {
-
-           List<Bogie> list = Arrays.asList(
-                   new Bogie("B1", "Passenger"),
-                   new Bogie("B2", "Goods"),
-                   new Bogie("B3", "Passenger")
-           );
-
-           List<Bogie> result = TrainApp.filterPassengerBogies(list);
-
-           assertEquals(2, result.size());
-       }
-   } public static void main(String[] args) {
-
-        List<Bogie> bogies = new ArrayList<>();
-
-        bogies.add(new Bogie("B1", "Passenger"));
-        bogies.add(new Bogie("B2", "Goods"));
-        bogies.add(new Bogie("B3", "Passenger"));
-
-        List<Bogie> result = filterPassengerBogies(bogies);
-
-        System.out.println("=== PASSENGER BOGIES ===");
-        for (Bogie b : result) {
-            System.out.println(b.id + " - " + b.type);
-        }
+        System.out.println(totalSeats(list));
     }
 }
