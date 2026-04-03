@@ -77,7 +77,30 @@ public class TrainApp {
  import java.util.*;
  import static org.junit.jupiter.api.Assertions.*;
 
+public class TrainApp {
+
+    public static int validateCapacity(int capacity) {
+        if (capacity < 0) {
+            throw new IllegalArgumentException("Invalid Capacity");
+        }
+        return capacity;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(validateCapacity(50));
+    }
+}import org.junit.jupiter.api.Test;
+ import static org.junit.jupiter.api.Assertions.*;
+
  public class TrainAppTest {
+
+     @Test
+     void testInvalidCapacity() {
+         assertThrows(IllegalArgumentException.class, () -> {
+             TrainApp.validateCapacity(-10);
+         });
+     }
+ } public class TrainAppTest {
 
      @Test
      void testPerformanceEquality() {
