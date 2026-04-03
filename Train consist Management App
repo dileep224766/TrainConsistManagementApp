@@ -1,0 +1,56 @@
+import java.util.*;
+import java.util.stream.*;
+
+class Bogie {
+    String id;
+    String type;
+
+    Bogie(String id, String type) {
+        this.id = id;
+        this.type = type;
+    }
+}
+
+public class TrainApp {
+
+    public static List<Bogie> filterPassengerBogies(List<Bogie> list) {
+        return list.stream()
+                .filter(b -> b.type.equalsIgnoreCase("Passenger"))
+                .collect(Collectors.toList());
+    }
+
+   import org.junit.jupiter.api.Test;
+   import java.util.*;
+   import static org.junit.jupiter.api.Assertions.*;
+
+   public class TrainAppTest {
+
+       @Test
+       void testFilterPassengerBogies() {
+
+           List<Bogie> list = Arrays.asList(
+                   new Bogie("B1", "Passenger"),
+                   new Bogie("B2", "Goods"),
+                   new Bogie("B3", "Passenger")
+           );
+
+           List<Bogie> result = TrainApp.filterPassengerBogies(list);
+
+           assertEquals(2, result.size());
+       }
+   } public static void main(String[] args) {
+
+        List<Bogie> bogies = new ArrayList<>();
+
+        bogies.add(new Bogie("B1", "Passenger"));
+        bogies.add(new Bogie("B2", "Goods"));
+        bogies.add(new Bogie("B3", "Passenger"));
+
+        List<Bogie> result = filterPassengerBogies(bogies);
+
+        System.out.println("=== PASSENGER BOGIES ===");
+        for (Bogie b : result) {
+            System.out.println(b.id + " - " + b.type);
+        }
+    }
+}
