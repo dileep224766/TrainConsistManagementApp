@@ -12,10 +12,51 @@ public class TrainApp {
             }
         }
 
-        public static void main(String[] args) {
+    import java.util.*;
+
+        class Bogie {
+            String id;
+            int capacity;
+
+            Bogie(String id, int capacity) {
+                this.id = id;
+                this.capacity = capacity;
+            }
+        }
+
+        public class TrainApp {
+
+            public static List<Bogie> sortBogies(List<Bogie> list) {
+                list.sort(Comparator.comparingInt(b -> b.capacity));
+                return list;
+            }
+
+            public static void main(String[] args) {
+                List<Bogie> list = Arrays.asList(
+                        new Bogie("B1", 72),
+                        new Bogie("B2", 60)
+                );
+
+                sortBogies(list).forEach(b -> System.out.println(b.id));
+            }
+        }    public static void main(String[] args) {
             System.out.println(assignCargo(50));
         }
-    }    public static void main(String[] args) {
+import java.util.*;
+
+        public class TrainApp {
+
+            public static String[] sortNames(String[] arr) {
+                Arrays.sort(arr);
+                return arr;
+            }
+
+            public static void main(String[] args) {
+                String[] arr = {"B3", "B1", "B2"};
+                sortNames(arr);
+                System.out.println(Arrays.toString(arr));
+            }
+        }    }    public static void main(String[] args) {
 
         String trainId = "TR123";
         String cargoCode = "CG456";
