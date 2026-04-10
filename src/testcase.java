@@ -38,9 +38,19 @@ public class TrainAppTest {
         String[] arr = {"B1", "B2"};
         assertEquals(1, TrainApp.linearSearch(arr, "B2"));
     }
-}public class TrainAppTest {
+}import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class TrainAppTest {
 
     @Test
+    void testBinarySearch() {
+        String[] arr = {"B3", "B1", "B2"};
+        assertTrue(TrainApp.binarySearch(arr, "B2") >= 0);
+    }
+}public class TrainAppTest {
+
+
     void testSafeCargo() {
         assertEquals("Cargo Assigned", TrainApp.assignCargo(50));
         assertEquals("Invalid Capacity", TrainApp.assignCargo(-10));

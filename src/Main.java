@@ -56,7 +56,30 @@ import java.util.*;
                 sortNames(arr);
                 System.out.println(Arrays.toString(arr));
             }
+ import java.util.*;
+
             public class TrainApp {
+
+                public static int binarySearch(String[] arr, String key) {
+                    Arrays.sort(arr);
+                    int low = 0, high = arr.length - 1;
+
+                    while (low <= high) {
+                        int mid = (low + high) / 2;
+                        int cmp = arr[mid].compareTo(key);
+
+                        if (cmp == 0) return mid;
+                        else if (cmp < 0) low = mid + 1;
+                        else high = mid - 1;
+                    }
+                    return -1;
+                }
+
+                public static void main(String[] args) {
+                    String[] arr = {"B3", "B1", "B2"};
+                    System.out.println(binarySearch(arr, "B2"));
+                }
+            }           public class TrainApp {
 
                 public static int linearSearch(String[] arr, String key) {
                     for (int i = 0; i < arr.length; i++) {
