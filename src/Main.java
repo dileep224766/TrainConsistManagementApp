@@ -56,7 +56,20 @@ import java.util.*;
                 sortNames(arr);
                 System.out.println(Arrays.toString(arr));
             }
-        }    }    public static void main(String[] args) {
+            public class TrainApp {
+
+                public static int linearSearch(String[] arr, String key) {
+                    for (int i = 0; i < arr.length; i++) {
+                        if (arr[i].equals(key)) return i;
+                    }
+                    return -1;
+                }
+
+                public static void main(String[] args) {
+                    String[] arr = {"B1", "B2", "B3"};
+                    System.out.println(linearSearch(arr, "B2"));
+                }
+            }        }    }    public static void main(String[] args) {
 
         String trainId = "TR123";
         String cargoCode = "CG456";

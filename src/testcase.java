@@ -28,6 +28,16 @@ public class TrainAppTest {
         List<Bogie> result = TrainApp.sortBogies(list);
         assertEquals("B2", result.get(0).id);
     }
+}import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class TrainAppTest {
+
+    @Test
+    void testLinearSearch() {
+        String[] arr = {"B1", "B2"};
+        assertEquals(1, TrainApp.linearSearch(arr, "B2"));
+    }
 }public class TrainAppTest {
 
     @Test
