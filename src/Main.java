@@ -1,5 +1,21 @@
 public class TrainApp {
-    public static void main(String[] args) {
+    public class TrainApp {
+
+        public static String assignCargo(int capacity) {
+            try {
+                if (capacity < 0) {
+                    throw new IllegalArgumentException("Invalid Capacity");
+                }
+                return "Cargo Assigned";
+            } catch (Exception e) {
+                return e.getMessage();
+            }
+        }
+
+        public static void main(String[] args) {
+            System.out.println(assignCargo(50));
+        }
+    }    public static void main(String[] args) {
 
         String trainId = "TR123";
         String cargoCode = "CG456";
